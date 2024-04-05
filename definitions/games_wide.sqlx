@@ -1,0 +1,6 @@
+config {
+        type: "declaration",
+        database: "bigquery-public-data",
+        schema: "baseball",
+        name: "games_wide"
+    }

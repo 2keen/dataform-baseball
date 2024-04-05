@@ -1,0 +1,10 @@
+-- publish("src_baseball") {
+--     description: "reference to source data for dataset",
+--     config {
+--         type: "declaration",
+--         database: "bigquery-public-data",
+--         schema: "baseball",
+--         name: "games_wide"
+--     },
+--     query: `SELECT * FROM ${ref("games_wide")}`
+-- }
