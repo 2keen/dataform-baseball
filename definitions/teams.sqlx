@@ -1,0 +1,17 @@
+
+config {
+  type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
+  columns: {
+    teamId: "id for the team in this dataset", // Column descriptions are pushed to BigQuery.
+    teamName: "the common name of the team"
+  }
+}
+
+-- The rest of a SQLX file contains your SELECT statement used to create the table.
+
+SELECT Distinct
+    awayTeamId as teamId,
+    awayTeamName as teamName
+
+FROM `bigquery-public-data.baseball.games_wide`
+where awayTeamName != 'National League'
