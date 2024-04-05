@@ -1,0 +1,50 @@
+config {
+    type: "view",
+    description: "list of all players with at least one game appearance",
+    columns: {
+        playerId: "unique ID for the player in this dataset",
+        lastName: "player's last name",
+        firstName: "player's first name",
+        teamName: "team player has appeared for",
+        playerType: "whether player's appearance is as a hitter or pitcher"
+    }
+}
+
+
+
+-- Query
+
+SELECT Distinct
+
+hitterId as playerId,
+hitterLastName as lastName,
+hitterFirstName as firstName,
+-- CASE 
+--   WHEN inningHalf = 'TOP' THEN awayTeamName 
+--   WHEN inningHalf = 'BOT' THEN homeTeamName
+--   END as teamName,
+-- 'HITTER' as playerType,
+
+FROM `bigquery-public-data.baseball.games_wide` 
+WHERE atBatEventSequenceNumber != 0
+
+
+
+UNION ALL
+
+SELECT Distinct
+pitcherId as playerId,
+pitcherLastName as lastName,
+pitcherFirstName as firstName,
+-- CASE 
+--   WHEN inningHalf = 'BOT' THEN awayTeamName 
+--   WHEN inningHalf = 'TOP' THEN homeTeamName
+--   END as teamName,
+-- 'PITCHER' as playerType,
+
+
+FROM `bigquery-public-data.baseball.games_wide` 
+WHERE atBatEventSequenceNumber != 0
+
+
+

@@ -14,3 +14,4 @@ SELECT Distinct
     awayTeamName as teamName
 
 FROM `bigquery-public-data.baseball.games_wide`
+where awayTeamName != 'National League'
