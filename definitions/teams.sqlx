@@ -1,5 +1,6 @@
 
 config {
+  description: "all 30 MLB teams",
   type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
   columns: {
     teamId: "id for the team in this dataset", // Column descriptions are pushed to BigQuery.
@@ -13,5 +14,5 @@ SELECT Distinct
     awayTeamId as teamId,
     awayTeamName as teamName
 
-FROM `bigquery-public-data.baseball.games_wide`
+FROM ${ref("games_wide")}
 where awayTeamName != 'National League'
