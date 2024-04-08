@@ -1,0 +1,15 @@
+config {
+    type: "view",
+    description: "count of all players",
+    columns: {
+        total_players: "unique ID for the player in this dataset",
+        date: "date the playercount was pulled"
+    }
+}
+
+
+SELECT 
+    count(*) as total_players,
+    CURRENT_DATE() as date,
+
+ from ${ref("players")}
